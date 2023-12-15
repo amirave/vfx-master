@@ -1,0 +1,52 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!21 &2100000
+Material:
+  serializedVersion: 8
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: PortalBlue 1
+  m_Shader: {fileID: 4800000, guid: 6fdd86943021497ab3813343267a8294, type: 3}
+  m_Parent: {fileID: 0}
+  m_ModifiedSerializedProperties: 0
+  m_ValidKeywords: []
+  m_InvalidKeywords: []
+  m_LightmapFlags: 4
+  m_EnableInstancingVariants: 0
+  m_DoubleSidedGI: 0
+  m_CustomRenderQueue: -1
+  stringTagMap: {}
+  disabledShaderPasses: []
+  m_LockedProperties: 
+  m_SavedProperties:
+    serializedVersion: 3
+    m_TexEnvs:
+    - _Gradient:
+        m_Texture: {fileID: 2800000, guid: 4be46382ef04aef4fb6c39a7e7035c79, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _MovingTex:
+        m_Texture: {fileID: 2800000, guid: 2fcb8bb6c1580424fa39297373a20bab, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    - _ShapeTex:
+        m_Texture: {fileID: 2800000, guid: f28ed5de1652ba945b405abe0de69ec1, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
+    m_Ints: []
+    m_Floats:
+    - _Cutoff: 0.778
+    - _Intensity: 9.09
+    - _LengthScale: 1
+    - _Multiply: 10
+    - _Offset: 5.28
+    - _RadialScale: 0.91
+    - _ShapeTexIntensity: 0
+    - _Smoothness: 0.515
+    - _SpeedX: -2.86
+    - _SpeedY: 2.4
+    - _Stretch: 5.41
+    m_Colors: []
+  m_BuildTextureStacks: []
