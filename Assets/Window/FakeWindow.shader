@@ -36,8 +36,9 @@ Shader "Unlit/FakeWindow"
             {
                 float4 vertex : SV_POSITION;
                 UNITY_FOG_COORDS(1)
-                float4 worldPos : TEXCOORD0;
+                float4 pos : TEXCOORD0;
                 float2 uv : TEXCOORD1;
+                float3 camPos : TEXCOORD2;
             };
 
             samplerCUBE _MainTex;
@@ -45,13 +46,19 @@ Shader "Unlit/FakeWindow"
             float _Size;
             float4 _Offset;
             float4 _Rotation;
-            static const float Epsilon = 0.001;
+            
+            static const float Epsilon = 0.00001;
+            static const float3 Planes[6] = {float3(-1,0,0), float3(1,0,0), float3(0,-1,0), float3(0,1,0), float3(0,0,-1), float3(0,0,1)};
+            static const float3 PlaneNormals[6] = {float3(1,0,0), float3(-1,0,0), float3(0,1,0), float3(0,-1,0), float3(0,0,1), float3(0,0,-1)};
 
             v2f vert (appdata v)
             {
                 v2f o;
                 o.vertex = UnityObjectToClipPos(v.vertex);
-                o.worldPos = mul(unity_ObjectToWorld, v.vertex);
+                o.pos = v.vertex;
+                
+                o.camPos = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 1)).xyz;
+                
                 o.uv = TRANSFORM_TEX(v.uv, _MainTex);
                 UNITY_TRANSFER_FOG(o,o.vertex);
                 return o;
@@ -59,34 +66,31 @@ Shader "Unlit/FakeWindow"
 
             fixed4 frag (v2f i) : SV_Target
             {
-                float3 objPos = mul(unity_WorldToObject, i.worldPos).xyz;
-
-                float3 planes[6] = {float3(-1,0,0), float3(1,0,0), float3(0,-1,0), float3(0,1,0), float3(0,0,-1), float3(0,0,1)};
-                float3 planeNormals[6] = {float3(1,0,0), float3(-1,0,0), float3(0,1,0), float3(0,-1,0), float3(0,0,1), float3(0,0,-1)};
-                
-                float3 camPos = mul(unity_WorldToObject, float4(_WorldSpaceCameraPos, 1)).xyz;
-                float3 camDir = normalize(objPos - camPos).xyz;
-                
                 fixed4 col = fixed4(0,0,0,1);
+                float3 test = i.pos.xyz;//frac(i.pos.xyz * 0.999 * _MainTex_ST.xyy + _MainTex_ST.zww);
+                float3 dir = normalize(test - i.camPos);
+                // float h = frac(i.pos.y * _MainTex_ST.y + _MainTex_ST.w);
                 
-                for (int i = 0; i < 6; i++)
+                // return fixed4(test, 1);
+                
+                for (int face = 0; face < 6; face++)
                 {
                     int mask = 1;
                     
-                    float denominator = dot(planeNormals[i], camDir);
-                    mask -= denominator < 0;
+                    float denominator = dot(PlaneNormals[face], dir);
+                    mask -= denominator > 0;
                     
-                    float3 diff = (planes[i] * _Size) + _Offset - camPos;
-                    float t = dot(diff, planeNormals[i]) / denominator;
+                    float3 diff = (Planes[face] * _Size) + _Offset - i.camPos;
+                    float t = dot(diff, PlaneNormals[face]) / denominator;
                     mask -= t < 0;
                     
-                    float3 p = camPos + t * camDir - _Offset.xyz;
+                    float3 p = i.camPos + t * dir - _Offset.xyz;
                     float3 cutoff = _Size + Epsilon;
                     mask -= abs(p.x) > cutoff.x || abs(p.y) > cutoff.y || abs(p.z) > cutoff.z;
                     
                     // UNITY_APPLY_FOG(i.fogCoord, col);
                     p = mul(rotate(radians(_Rotation.xyz)), p);
-                    col = texCUBE(_MainTex, p);
+                    col += saturate(mask) * texCUBE(_MainTex, p);
                 }
                 
                 return col;
