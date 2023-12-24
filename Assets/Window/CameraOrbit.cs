@@ -13,6 +13,7 @@ namespace TDLN.CameraControllers
 
         public float yMinLimit = -20;
         public float yMaxLimit = 80;
+        public float lerpSpeed = 0.1f;
 
         float x = 0.0f;
         float y = 0.0f;
@@ -25,6 +26,7 @@ namespace TDLN.CameraControllers
         }
 
         float prevDistance;
+        private Quaternion targetRot;
 
         void LateUpdate()
         {
@@ -50,9 +52,8 @@ namespace TDLN.CameraControllers
                 y = ClampAngle(y, yMinLimit, yMaxLimit);
                 var rotation = Quaternion.Euler(y, x, 0);
                 var position = rotation * new Vector3(0.0f, 0.0f, -distance) + target.transform.position;
-                transform.rotation = rotation;
-                transform.position = position;
-
+                
+                targetRot = rotation;
             }
             else
             {
@@ -66,9 +67,11 @@ namespace TDLN.CameraControllers
                 prevDistance = distance;
                 var rot = Quaternion.Euler(y, x, 0);
                 var po = rot * new Vector3(0.0f, 0.0f, -distance) + target.transform.position;
-                transform.rotation = rot;
-                transform.position = po;
+                targetRot = rot;
             }
+            
+            transform.rotation = Quaternion.Lerp(transform.rotation, targetRot, lerpSpeed);
+            transform.position = transform.rotation * new Vector3(0.0f, 0.0f, -distance) + target.transform.position;
         }
 
         static float ClampAngle(float angle, float min, float max)
