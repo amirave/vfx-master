@@ -96,7 +96,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9f831e3525ae422ab0e8ca29c681c810, type: 3}
   m_Name: SecondBlitRendererFeature
   m_EditorClassIdentifier: 
-  m_Active: 1
+  m_Active: 0
   m_shader: {fileID: 4800000, guid: 3418282825e71a54fae9fb09252ea82e, type: 3}
 --- !u!114 &-4778375540445562474
 MonoBehaviour:
