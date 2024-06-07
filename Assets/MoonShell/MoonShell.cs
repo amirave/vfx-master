@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Playables;
 
 [ExecuteAlways]
 public class MoonShell : MonoBehaviour
@@ -27,6 +28,12 @@ public class MoonShell : MonoBehaviour
 
     void Update()
     {
+        if (Input.GetKeyDown(KeyCode.Space))
+        {
+            GetComponent<PlayableDirector>().Stop();
+            GetComponent<PlayableDirector>().Play();
+        }
+        
         var glowFactor = Mathf.Pow(2, _glowIntensity);
         var finalColor = new Color(_glow.r * glowFactor, _glow.g * glowFactor, _glow.b * glowFactor, _glow.a);
                 

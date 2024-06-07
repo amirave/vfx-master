@@ -112,7 +112,7 @@ Material:
     - _Metallic: 0.651
     - _NoiseFeather: 0.38
     - _NoiseOffset: 1.26
-    - _NoiseReveal: 0.35
+    - _NoiseReveal: 0
     - _NormalFacter: 0.2
     - _OcclusionStrength: 0
     - _Parallax: 0.005
