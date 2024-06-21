@@ -39,16 +39,19 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellDensity: 8.61
+    - _FersnelAmount: 1
+    - _FersnelPower: 2.5
     - _Intensity: 1.47
     - _Opacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VoronoiPower: 0.73
+    - _VoronoiPower: 0.47
     - _VoronoiScale: 13.1
-    - _VoronoiSpeed: 48.5
+    - _VoronoiSpeed: 100
     m_Colors:
-    - _Color: {r: 0.6628623, g: 0, b: 1, a: 1}
-    - _VoronoiScale: {r: -0.5, g: 0.77, b: 0, a: 0}
+    - _Color: {r: 0.6628623, g: 0, b: 1, a: 0.5019608}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
+    - _VoronoiScale: {r: -0.44, g: 0.77, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1142089131608145579
 MonoBehaviour:
