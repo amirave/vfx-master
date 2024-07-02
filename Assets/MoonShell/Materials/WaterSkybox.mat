@@ -52,13 +52,13 @@ Material:
     m_Ints: []
     m_Floats:
     - _ExponentBottom: 3.09
-    - _ExponentTop: 1.32
-    - _Intensity: 3.36
+    - _ExponentTop: 0.26
+    - _Intensity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
-    - _VerticalShift: 0.17
+    - _VerticalShift: -0.25
     m_Colors:
-    - _BottomColor: {r: 0, g: 0, b: 0, a: 1}
-    - _MiddleColor: {r: 0.09972411, g: 0.3253428, b: 0.7830189, a: 1}
-    - _TopColor: {r: 0.33980063, g: 0.6328611, b: 0.8679245, a: 1}
+    - _BottomColor: {r: 0.03177287, g: 0.05828507, b: 0.3207547, a: 1}
+    - _MiddleColor: {r: 0.14159843, g: 0.45358086, b: 0.8113208, a: 1}
+    - _TopColor: {r: 1, g: 1, b: 1, a: 1}
   m_BuildTextureStacks: []

@@ -57,6 +57,8 @@ Material:
     m_Floats:
     - _ColorNoiseScale: 0.7
     - _Color_Intensity: 2.59
+    - _FadeEnd: 1
+    - _FadeStart: 0
     - _Lean: 2.68
     - _LeanAngle: 0.14
     - _Opacity: 1
