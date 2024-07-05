@@ -11,6 +11,7 @@ public class MoonShell : MonoBehaviour
 
     public float _noiseReveal = 0;
     public float _noiseFeather = 0;
+    public float _noiseOpacity = 0;
 
     public float _noiseOffset = 0;
     // [ColorUsage(true, true, 0, 1, 0.125f, 3)]
@@ -44,6 +45,7 @@ public class MoonShell : MonoBehaviour
                 renderer.material.SetFloat("_NoiseReveal", _noiseReveal);
                 renderer.material.SetFloat("_NoiseFeather", _noiseFeather);
                 renderer.material.SetFloat("_NoiseOffset", _noiseOffset);
+                renderer.material.SetFloat("_NoiseOpacity", _noiseOpacity);
                 renderer.material.SetColor("_Glow", finalColor);
             }
             else
@@ -53,6 +55,7 @@ public class MoonShell : MonoBehaviour
                 mat.SetFloat("_NoiseReveal", _noiseReveal);
                 mat.SetFloat("_NoiseFeather", _noiseFeather);
                 mat.SetFloat("_NoiseOffset", _noiseOffset);
+                mat.SetFloat("_NoiseOpacity", _noiseOpacity);
                 mat.SetColor("_Glow", finalColor);
                 
                 renderer.sharedMaterial = mat;
