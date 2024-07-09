@@ -39,7 +39,10 @@ Material:
     m_Ints: []
     m_Floats:
     - _CellDensity: 8.61
+    - _FersnelAmount: 0
+    - _FersnelPower: 0
     - _Intensity: 6.22
+    - _Opacity: 1
     - _QueueControl: 0
     - _QueueOffset: 0
     - _VoronoiPower: 3.73
@@ -47,6 +50,7 @@ Material:
     - _VoronoiSpeed: 42.95
     m_Colors:
     - _Color: {r: 0.25064513, g: 0.094117604, b: 0.40392154, a: 0.6666667}
+    - _Offset: {r: 0, g: 0, b: 0, a: 0}
     - _VoronoiScale: {r: 3, g: 2, b: 0, a: 0}
   m_BuildTextureStacks: []
 --- !u!114 &1142089131608145579
