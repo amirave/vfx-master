@@ -7,8 +7,8 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: Unlit_BasicMatCap
-  m_Shader: {fileID: 4800000, guid: b10a801d2b5dc73448a4080361750fa8, type: 3}
+  m_Name: Unlit_AdvancedMatCap 2
+  m_Shader: {fileID: 4800000, guid: 7b6569f85d3b98842ab285dc5917ccaa, type: 3}
   m_Parent: {fileID: 0}
   m_ModifiedSerializedProperties: 0
   m_ValidKeywords: []
@@ -27,7 +27,12 @@ Material:
         m_Texture: {fileID: 2800000, guid: 8cdbbe953c572444aada8e87c3428b95, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
+    - _Tex2:
+        m_Texture: {fileID: 2800000, guid: 9b4d9b6071940de46927140a1c9e0f6f, type: 3}
+        m_Scale: {x: 1, y: 1}
+        m_Offset: {x: 0, y: 0}
     m_Ints: []
-    m_Floats: []
+    m_Floats:
+    - _Fade: 0
     m_Colors: []
   m_BuildTextureStacks: []
